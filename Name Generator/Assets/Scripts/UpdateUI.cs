@@ -8,15 +8,6 @@ public class UpdateUI : MonoBehaviour
     [SerializeField] private GameObject content;
     [SerializeField] private GameObject textFieldPrefab;
     private List<GameObject> contentList = new List<GameObject>();
-    //public void AddNameToUIList(string newName)
-    //{
-
-    //    GameObject tempName = new GameObject($"text {newName}");
-    //    tempName.transform.parent = content.transform;
-    //    TextMeshProUGUI text = tempName.AddComponent<TextMeshProUGUI>();
-    //    text.text = newName;
-    //    contentList.Add(tempName);
-    //}
 
     public void AddNameListToUI(List<string> nameList)
     {

@@ -65,7 +65,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 64
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8600000, guid: d651a66b1e3cb9f4d8144b6334838cd1, type: 2}
   m_TargetDisplay: 0
@@ -171,7 +171,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8437693261386828847, guid: 3d8741f9e126387408fb18a11b3468c3, type: 3}
       propertyPath: m_Layer
-      value: 5
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8437693261386828883, guid: 3d8741f9e126387408fb18a11b3468c3, type: 3}
+      propertyPath: offset.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d8741f9e126387408fb18a11b3468c3, type: 3}

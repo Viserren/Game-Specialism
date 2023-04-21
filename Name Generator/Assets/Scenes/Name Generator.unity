@@ -1746,9 +1746,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6320eed754d72e4880d34f1a23b3301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NewNameGenerated:
-    m_PersistentCalls:
-      m_Calls: []
   FinishedNameGeneration:
     m_PersistentCalls:
       m_Calls:
@@ -1767,8 +1764,8 @@ MonoBehaviour:
   nameLengthMin: 4
   nameLengthMax: 8
   numberOfNames: 100
-  logNames: 1
-  _currentWordIndex: 0
+  logNames: 0
+  removeObscenities: 1
 --- !u!1 &1183291708
 GameObject:
   m_ObjectHideFlags: 0

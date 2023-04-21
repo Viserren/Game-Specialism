@@ -9,9 +9,8 @@ public class FPSGraphDisplay : MonoBehaviour
     public float frequency = 1;
     public float amplitude = 1;
     public Vector2 offset = new Vector2(0,1);
-    private float yOffset;
-    public float yOffsetFraction = 2.5f;
-    public float maxPeek;
+    private float _yOffset;
+    private float _maxPeek;
 
 
     private void Awake()
@@ -31,16 +30,16 @@ public class FPSGraphDisplay : MonoBehaviour
 
     void Draw(List<float> graph)
     {
-        yOffset = ((amplitude / yOffsetFraction) * -1) + offset.y;
+        _yOffset = (amplitude * -1) + offset.y;
 
         FPSLineHistory.positionCount = graph.Count;
         for (int currentPoint = 0; currentPoint < graph.Count; currentPoint++)
         {
-            if (graph[currentPoint] > maxPeek)
+            if (graph[currentPoint] > _maxPeek)
             {
-                maxPeek = graph[currentPoint];
+                _maxPeek = graph[currentPoint];
             }
-            FPSLineHistory.SetPosition(currentPoint, new Vector3((currentPoint + offset.x) * frequency, ((Mathf.InverseLerp(0, maxPeek, graph[currentPoint]) * amplitude) + yOffset), 0));
+            FPSLineHistory.SetPosition(currentPoint, new Vector3((currentPoint + offset.x) * frequency, ((Mathf.InverseLerp(0, _maxPeek, graph[currentPoint]) * amplitude) + _yOffset), 0));
         }
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class NameGenerator : MonoBehaviour
 {
-    public UnityEvent<string> NewNameGenerated = new UnityEvent<string>();
     public UnityEvent<List<string>> FinishedNameGeneration = new UnityEvent<List<string>>();
     private static readonly char[] _consonants = { 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z' };
     private static readonly char[] _vowels = { 'a', 'e', 'i', 'o', 'u' };
@@ -15,13 +14,13 @@ public class NameGenerator : MonoBehaviour
     public int nameLengthMax = 8;
     public int numberOfNames = 100;
     public bool logNames = true;
-    [SerializeField] int _currentWordIndex = 0;
+    public bool removeObscenities = true;
 
     private List<string> _names = new List<string>();
 
-    public void SetAmountToGenerate(float numberToSpawn)
+    public void SetAmountToGenerate(int numberToSpawn)
     {
-        numberOfNames = (int)numberToSpawn;
+        numberOfNames = numberToSpawn;
     }
     public void SetAmountToGenerate(string numberToSpawn)
     {
@@ -47,9 +46,7 @@ public class NameGenerator : MonoBehaviour
         while (_names.Count < numberOfNames)
         {
             var name = GenerateName(nameLengthMin, nameLengthMax);
-            NewNameGenerated.Invoke(name);
             TestNames(name);
-            _currentWordIndex = _names.Count;
             yield return new WaitForSeconds(0.001f);
         }
         _names.Sort();
@@ -78,7 +75,7 @@ public class NameGenerator : MonoBehaviour
             Debug.LogError($"Invalid name '{name}': contains non-letter characters");
             return;
         }
-        if (Obscenities.Obscenes.Contains(name.ToLower()))
+        if (Obscenities.Obscenes.Contains(name.ToLower()) && removeObscenities)
         {
             Debug.LogError($"Invalid name '{name}': contains obscenity");
             return;
