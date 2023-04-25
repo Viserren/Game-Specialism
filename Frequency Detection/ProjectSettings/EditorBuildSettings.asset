@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Frequency Detection.unity
+    guid: 320aca1a6c666444e9e613a79b546986
   m_configObjects: {}
