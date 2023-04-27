@@ -19,7 +19,7 @@ public class AudioAnalyser : MonoBehaviour
     public static float[] audioBandBuffer = new float[8];
 
     [Range(0, 1)]
-    public float[] beatThreashold = new float[8] { .5f, .5f, .5f, .5f, .5f, .5f, .5f, .5f };
+    public float[] beatThreshold = new float[8] { .5f, .5f, .5f, .5f, .5f, .5f, .5f, .5f };
 
 
     [Range(0.00001f, .5f)]
@@ -66,7 +66,7 @@ public class AudioAnalyser : MonoBehaviour
     {
         for (int i = 0; i < frequencyBands.Length; i++)
         {
-            if (frequencyBands[i] >= beatThreashold[i])
+            if (frequencyBands[i] >= beatThreshold[i])
             {
                 FrequencyHit?.Invoke(i);
             }
