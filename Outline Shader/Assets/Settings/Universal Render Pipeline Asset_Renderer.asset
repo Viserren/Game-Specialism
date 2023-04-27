@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8412355892735395898
+--- !u!114 &-468882943724775202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23,11 +23,11 @@ MonoBehaviour:
   outlineSettings:
     outlineColor: {r: 0, g: 0, b: 0, a: 1}
     outlineScale: 1
-    depthThreshold: 5
+    depthThreshold: 100
     robertsCrossMultiplier: 100
-    normalThreshold: 0.25
-    steepAngleThreshold: 0.1
-    steepAngleMultiplier: 200
+    normalThreshold: 0.4
+    steepAngleThreshold: 0.2
+    steepAngleMultiplier: 25
   viewSpaceNormalsTextureSettings:
     colorFormat: 0
     depthBufferBits: 16
@@ -51,8 +51,8 @@ MonoBehaviour:
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
   m_RendererFeatures:
-  - {fileID: -8412355892735395898}
-  m_RendererFeatureMap: c6b757d9e24e418b
+  - {fileID: -468882943724775202}
+  m_RendererFeatureMap: de980b6a72317ef9
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
