@@ -16,6 +16,9 @@ public class ScreenSpaceOutlines : ScriptableRendererFeature
         public Color outlineColor = Color.black;
         [Range(0.0f, 20.0f)]
         public float outlineScale = 1.0f;
+        public float lineWobble = 1f;
+        [Range(0.0000001f, 0.005f)]
+        public float lineWobbleAmount = 1f;
 
         [Header("Depth Settings")]
         [Range(0.0f, 100.0f)]
@@ -82,8 +85,8 @@ public class ScreenSpaceOutlines : ScriptableRendererFeature
             normals.Init("_SceneViewSpaceNormals");
             normalsMaterial = new Material(Shader.Find("Hidden/ViewSpaceNormals"));
 
-            occludersMaterial = new Material(Shader.Find("Hidden/UnlitColor"));
-            occludersMaterial.SetColor("_Color", normalsTextureSettings.backgroundColor);
+            //occludersMaterial = new Material(Shader.Find("Hidden/UnlitColor"));
+            //occludersMaterial.SetColor("_Color", normalsTextureSettings.backgroundColor);
         }
 
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
@@ -91,6 +94,7 @@ public class ScreenSpaceOutlines : ScriptableRendererFeature
             RenderTextureDescriptor normalsTextureDescriptor = cameraTextureDescriptor;
             normalsTextureDescriptor.colorFormat = normalsTextureSettings.colorFormat;
             normalsTextureDescriptor.depthBufferBits = normalsTextureSettings.depthBufferBits;
+            normalsTextureDescriptor.sRGB = false;
             cmd.GetTemporaryRT(normals.id, normalsTextureDescriptor, normalsTextureSettings.filterMode);
 
             ConfigureTarget(normals.Identifier());
@@ -99,7 +103,9 @@ public class ScreenSpaceOutlines : ScriptableRendererFeature
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
-            if (!normalsMaterial || !occludersMaterial)
+            //if (!normalsMaterial || !occludersMaterial)
+            //    return;
+            if (!normalsMaterial)
                 return;
 
             CommandBuffer cmd = CommandBufferPool.Get();
@@ -146,9 +152,11 @@ public class ScreenSpaceOutlines : ScriptableRendererFeature
         {
             this.renderPassEvent = renderPassEvent;
 
-            screenSpaceOutlineMaterial = new Material(Shader.Find("Hidden/Outlines"));
+            screenSpaceOutlineMaterial = new Material(Shader.Find("Hidden/OutlineShader"));
             screenSpaceOutlineMaterial.SetColor("_OutlineColor", settings.outlineColor);
             screenSpaceOutlineMaterial.SetFloat("_OutlineScale", settings.outlineScale);
+            screenSpaceOutlineMaterial.SetFloat("_LineWobble", settings.lineWobble);
+            screenSpaceOutlineMaterial.SetFloat("_LineWobbleAmount", settings.lineWobbleAmount);
 
             screenSpaceOutlineMaterial.SetFloat("_DepthThreshold", settings.depthThreshold);
             screenSpaceOutlineMaterial.SetFloat("_RobertsCrossMultiplier", settings.robertsCrossMultiplier);

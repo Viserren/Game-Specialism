@@ -15,8 +15,8 @@ MonoBehaviour:
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}
   m_RendererFeatures:
-  - {fileID: 9027660773229727253}
-  m_RendererFeatureMap: 150e1685a4b1487d
+  - {fileID: 2382870396056414405}
+  m_RendererFeatureMap: c5a8bc0e00a81121
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_ClusteredRendering: 0
   m_TileSize: 32
   m_IntermediateTextureMode: 1
---- !u!114 &9027660773229727253
+--- !u!114 &2382870396056414405
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,14 +77,16 @@ MonoBehaviour:
   outlineSettings:
     outlineColor: {r: 0, g: 0, b: 0, a: 1}
     outlineScale: 1
+    lineWobble: 100
+    lineWobbleAmount: 0.00197
     depthThreshold: 1.5
-    robertsCrossMultiplier: 100
+    robertsCrossMultiplier: 60
     normalThreshold: 0.4
-    steepAngleThreshold: 0.14
-    steepAngleMultiplier: 41
+    steepAngleThreshold: 0.2
+    steepAngleMultiplier: 25
   viewSpaceNormalsTextureSettings:
     colorFormat: 0
-    depthBufferBits: 16
+    depthBufferBits: 50
     filterMode: 0
     backgroundColor: {r: 0, g: 0, b: 0, a: 1}
     perObjectData: 0
